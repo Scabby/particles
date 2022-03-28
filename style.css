@@ -53,9 +53,10 @@ body {
     position: absolute;
     background-color: unset;
     color: var(--fg);
-    width: 100vw;
+    width: 50vw;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: text 30s ease-in-out;
     animation-fill-mode: forwards;
     z-index: 1;
