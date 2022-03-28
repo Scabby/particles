@@ -1,13 +1,28 @@
 :root {
     --bg: #353535;
+    --dark: #404040;
     --fg: #e3e3e3;
-    --dark: #474747;
 }
 
 *, html {
     background-color: var(--bg);
     color: var(--fg);
     margin: 0;
+
+    -ms-text-size-adjust:       100%;
+    -webkit-text-size-adjust:   100%;
+
+    -webkit-tap-highlight-color: transparent;
+
+    font-family: "Roboto Mono",
+                 "DejaVu Sans Mono",
+                 ui-monospace,
+                 Menlo,
+                 Monaco,
+                 "Cascadia Mono",
+                 "Segoe UI Mono",
+                 "Courier New",
+                 monospace, monospace;
 }
 
 body {
@@ -21,70 +36,47 @@ body {
     100% { background-color: var(--dark); }
 }
 
-@keyframes loading_screen_text {
-    0% { opacity: 0; }
-    70% { opacity: 0; }
-    100% { opacity: 1; }
+@keyframes fade_particle {
+    0% { background-color: var(--dark); }
+    100% { background-color: var(--bg); }
 }
 
+@keyframes text {
+    0% { opacity: 0; }
+    75% { opacity: 0; }
+    80% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
-#loading_screen {
+#text {
+    position: absolute;
+    background-color: unset;
+    color: var(--fg);
+    width: 100vw;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: text 30s ease-in-out;
+    animation-fill-mode: forwards;
+    z-index: 1;
+
+    font-size: 1em;
+    text-align: center;
+}
+
+#screen {
+    position: absolute;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    animation: fade 3s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate;
+    animation: fade 3.5s cubic-bezier(0.8, 0, 0.4, 1) infinite alternate;
 }
 
-#loading_screen_text {
-    font-family: Georgia, serif;
-    background-color: unset;
-    color: var(--fg);
-
-    margin-top: calc(50vh - 20px);
-    padding-inline: 20vw;
-
-    text-align: center;
-    vertical-align: middle;
-    line-height: 20px;
-
-    animation: loading_screen_text 5s ease-in-out;
-}
-
-.bubble {
+.particle {
     position: absolute;
+    background-color: #474747;
     left: 0vw;
-    border-radius: 100px;
+    border-radius: 1000px;
+    animation: fade_particle 3.5s cubic-bezier(0.8, 0, 0.4, 1) infinite alternate;
+    z-index: 2;
 }
-
-@keyframes x0   { 0% { transform: translate(30vw, 160vh); } 100% { transform: translate(-40vw, -160vh); } } .x0 { width: 10px; height: 10px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x0 9s linear infinite; }
-@keyframes x1   { 0% { transform: translate(-10vw, 140vh); } 100% { transform: translate(130vw, -170vh); } } .x1 { width: 10.2px; height: 10.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x1 9.2s linear infinite; }
-@keyframes x2   { 0% { transform: translate(0vw, 200vh); } 100% { transform: translate(60vw, -110vh); } } .x2 { width: 10.4px; height: 10.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x2 9.4s linear infinite; }
-@keyframes x3   { 0% { transform: translate(60vw, 120vh); } 100% { transform: translate(140vw, -180vh); } } .x3 { width: 10.6px; height: 10.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x3 9.6s linear infinite; }
-@keyframes x4   { 0% { transform: translate(30vw, 150vh); } 100% { transform: translate(10vw, -110vh); } } .x4 { width: 10.8px; height: 10.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x4 9.8s linear infinite; }
-@keyframes x5   { 0% { transform: translate(30vw, 130vh); } 100% { transform: translate(-30vw, -150vh); } } .x5 { width: 11px; height: 11px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x5 10s linear infinite; }
-@keyframes x6   { 0% { transform: translate(110vw, 130vh); } 100% { transform: translate(20vw, -170vh); } } .x6 { width: 11.2px; height: 11.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x6 10.2s linear infinite; }
-@keyframes x7   { 0% { transform: translate(70vw, 150vh); } 100% { transform: translate(-10vw, -150vh); } } .x7 { width: 11.4px; height: 11.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x7 10.4s linear infinite; }
-@keyframes x8   { 0% { transform: translate(40vw, 130vh); } 100% { transform: translate(-20vw, -140vh); } } .x8 { width: 11.6px; height: 11.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x8 10.6s linear infinite; }
-@keyframes x9   { 0% { transform: translate(30vw, 190vh); } 100% { transform: translate(90vw, -130vh); } } .x9 { width: 11.8px; height: 11.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x9 10.8s linear infinite; }
-@keyframes x10  { 0% { transform: translate(80vw, 150vh); } 100% { transform: translate(120vw, -120vh); } } .x10 { width: 12px; height: 12px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x10 11s linear infinite; }
-@keyframes x11  { 0% { transform: translate(0vw, 100vh); } 100% { transform: translate(30vw, -180vh); } } .x11 { width: 12.2px; height: 12.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x11 11.2s linear infinite; }
-@keyframes x12  { 0% { transform: translate(30vw, 170vh); } 100% { transform: translate(-50vw, -160vh); } } .x12 { width: 12.4px; height: 12.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x12 11.4s linear infinite; }
-@keyframes x13  { 0% { transform: translate(150vw, 180vh); } 100% { transform: translate(-20vw, -150vh); } } .x13 { width: 12.6px; height: 12.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x13 11.6s linear infinite; }
-@keyframes x14  { 0% { transform: translate(50vw, 170vh); } 100% { transform: translate(-10vw, -190vh); } } .x14 { width: 12.8px; height: 12.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x14 11.8s linear infinite; }
-@keyframes x15  { 0% { transform: translate(-40vw, 160vh); } 100% { transform: translate(90vw, -140vh); } } .x15 { width: 13px; height: 13px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x15 12s linear infinite; }
-@keyframes x16  { 0% { transform: translate(-10vw, 170vh); } 100% { transform: translate(130vw, -170vh); } } .x16 { width: 13.2px; height: 13.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x16 12.2s linear infinite; }
-@keyframes x17  { 0% { transform: translate(90vw, 130vh); } 100% { transform: translate(-20vw, -130vh); } } .x17 { width: 13.4px; height: 13.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x17 12.4s linear infinite; }
-@keyframes x18  { 0% { transform: translate(60vw, 130vh); } 100% { transform: translate(-30vw, -200vh); } } .x18 { width: 13.6px; height: 13.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x18 12.6s linear infinite; }
-@keyframes x19  { 0% { transform: translate(80vw, 160vh); } 100% { transform: translate(50vw, -180vh); } } .x19 { width: 13.8px; height: 13.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x19 12.8s linear infinite; }
-@keyframes x20  { 0% { transform: translate(70vw, 130vh); } 100% { transform: translate(20vw, -150vh); } } .x20 { width: 14px; height: 14px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x20 13s linear infinite; }
-@keyframes x21  { 0% { transform: translate(50vw, 120vh); } 100% { transform: translate(30vw, -170vh); } } .x21 { width: 14.2px; height: 14.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x21 13.2s linear infinite; }
-@keyframes x22  { 0% { transform: translate(70vw, 130vh); } 100% { transform: translate(30vw, -140vh); } } .x22 { width: 14.4px; height: 14.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x22 13.4s linear infinite; }
-@keyframes x23  { 0% { transform: translate(100vw, 140vh); } 100% { transform: translate(-40vw, -190vh); } } .x23 { width: 14.6px; height: 14.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x23 13.6s linear infinite; }
-@keyframes x24  { 0% { transform: translate(30vw, 200vh); } 100% { transform: translate(-20vw, -140vh); } } .x24 { width: 14.8px; height: 14.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x24 13.8s linear infinite; }
-@keyframes x25  { 0% { transform: translate(100vw, 170vh); } 100% { transform: translate(60vw, -190vh); } } .x25 { width: 15px; height: 15px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x25 14s linear infinite; }
-@keyframes x26  { 0% { transform: translate(20vw, 130vh); } 100% { transform: translate(70vw, -110vh); } } .x26 { width: 15.2px; height: 15.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x26 14.2s linear infinite; }
-@keyframes x27  { 0% { transform: translate(20vw, 120vh); } 100% { transform: translate(-20vw, -100vh); } } .x27 { width: 15.4px; height: 15.4px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x27 14.4s linear infinite; }
-@keyframes x28  { 0% { transform: translate(100vw, 110vh); } 100% { transform: translate(-40vw, -110vh); } } .x28 { width: 15.6px; height: 15.6px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x28 14.6s linear infinite; }
-@keyframes x29  { 0% { transform: translate(-30vw, 140vh); } 100% { transform: translate(80vw, -100vh); } } .x29 { width: 15.8px; height: 15.8px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x29 14.8s linear infinite; }
-@keyframes x30  { 0% { transform: translate(60vw, 120vh); } 100% { transform: translate(-40vw, -140vh); } } .x30 { width: 16px; height: 16px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x30 15s linear infinite; }
-@keyframes x31  { 0% { transform: translate(10vw, 170vh); } 100% { transform: translate(30vw, -130vh); } } .x31 { width: 16.2px; height: 16.2px; animation: fade 9s cubic-bezier(0.7, 0, 0.4, 1) infinite alternate, x31 15.2s linear infinite; }
