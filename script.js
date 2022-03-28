@@ -90,3 +90,12 @@ onload = () => {
     create_particles()
     loop(base_recycle_delay)
 }
+
+ontouchstart = (e) => {
+    e.preventDefault()
+}
+
+ontouchmove = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+}
