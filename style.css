@@ -1,6 +1,6 @@
 :root {
     --bg: #353535;
-    --dark: #404040;
+    --dark: #474747;
     --fg: #e3e3e3;
 }
 
@@ -8,10 +8,9 @@
     background-color: var(--bg);
     color: var(--fg);
     margin: 0;
-
-    -ms-text-size-adjust:       100%;
-    -webkit-text-size-adjust:   100%;
-
+    
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
 
     font-family: "Roboto Mono",
